@@ -1,46 +1,17 @@
-const table = [
-    { letra: 'a', valor: 10 },
-    { letra: 'b',valor: 11 },
-    { letra: 'c',valor: 12 },
-    { letra: 'd',valor: 13 },
-    { letra: 'e',valor: 14 },
-    { letra: 'f',valor: 15 },
-    { letra: 'g',valor: 16 },
-    { letra: 'h',valor: 17 },
-    { letra: 'i',valor: 18 },
-    { letra: 'j',valor: 19 },
-    { letra: 'k',valor: 20 },
-    { letra: 'l',valor: 21 },
-    { letra: 'm',valor: 22 },
-    { letra: 'n',valor: 23 },
-    { letra: 'o',valor: 24 },
-    { letra: 'p',valor: 25 },
-    { letra: 'q',valor: 26 },
-    { letra: 'r',valor: 27 },
-    { letra: 's',valor: 28 },
-    { letra: 't',valor: 29 },
-    { letra: 'u',valor: 30 },
-    { letra: 'v',valor: 31 },
-    { letra: 'w',valor: 32 },
-    { letra: 'x',valor: 33 },
-    { letra: 'y',valor: 34 },
-    { letra: 'z',valor: 35 },
-];
+const primo = (n) => {
+	if (n == 1) return false;
+	for (var i = 2; i < n; i++) 
+		if (n % i == 0) return false;
+	return true;
+}
 
-// const primo = (n) => {
-// 	if (n == 1) return false;
-// 	for (var i = 2; i < n; i++) 
-// 		if (n % i == 0) return false;
-// 	return true;
-// }
-
-// const getPrimo = () => {
-//     var i = false;
-//     while (!i) {
-//         const random = parseInt(Math.random() * (20 - 2) + 2);
-//         if (primo(random)) return random;
-//     }
-// }
+const getPrimo = () => {
+    var i = false;
+    while (!i) {
+        const random = parseInt(Math.random() * (20 - 2) + 2);
+        if (primo(random)) return random;
+    }
+}
 
 const coprimo = (n1, n2) => {
     var a1 = [];
@@ -76,19 +47,6 @@ const returnTableLetter = (valor) => {
     }
 }
 
-// const p = getPrimo();
-// const q = getPrimo();
-// const n = p*q;
-// const phi = (p-1)*(q-1);
-// const e = calc_e(phi);
-// const d = (2 * phi + 1) / e;
-const p = 11;
-const q = 13;
-const n = p * q;
-const phi = (p - 1) * (q - 1);
-const e = calc_e(phi);
-const d = (2 * phi + 1) / e;
-
 const string2RSA = (m) => {
     var arrayRSA = new Array();
     for (var i = 0; i < m.length; i++) {
@@ -109,3 +67,15 @@ const RSA2String = (rsa) => {
     }
     return arrayString.join('');
 }
+
+
+const p = getPrimo();
+const q = getPrimo();
+const n = p*q;
+const phi = (p-1)*(q-1);
+const e = calc_e(phi);
+const d = (2 * phi + 1) / e;
+
+const criptografada = string2RSA("ola");
+
+const descriptografada = RSA2String(criptografada);
